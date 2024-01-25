@@ -54,7 +54,7 @@ export function Home() {
           <Participant
             key={participant}
             name={participant}
-            onRemove={() => handleParticipantRemove("Felipe")}
+            onRemove={() => handleParticipantRemove(participant)}
           />
         ))}
       </ScrollView>
