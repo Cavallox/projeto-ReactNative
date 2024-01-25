@@ -6,6 +6,11 @@ export function Home() {
   function handleParticipantAdd() {
     console.log("Você clicou no botão de adicionar!");
   }
+
+  function handleParticipantRemove(name: string){
+    console.log(`Você removeu o participante ${name}`) ;
+  }
+
   return (
     <View style={styles.container}>
       <Text style={styles.eventName}>Nome do Evento</Text>
@@ -19,13 +24,12 @@ export function Home() {
           placeholderTextColor="#6b6b6b"
         />
 
-        <TouchableOpacity style={styles.button} onPress={handleParticipantAdd}>
+        <TouchableOpacity style={styles.button} onPress={handleParticipantRemove}>
           <Text style={styles.buttonText}>+</Text>
         </TouchableOpacity>
       </View>
-      <Participant/>
-      <Participant/>
-      <Participant/>
+      <Participant name='Felipe' onRemove={() => handleParticipantRemove("Felipe")}/>
+      
     </View>
   );
 }
