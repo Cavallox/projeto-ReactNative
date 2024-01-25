@@ -1,14 +1,31 @@
-import { Text, TextInput, TouchableOpacity, View } from "react-native";
+import {
+  Text,
+  TextInput,
+  TouchableOpacity,
+  View,
+  ScrollView,
+} from "react-native";
 import { Participant } from "../../components/Participant";
 import { styles } from "./styles";
 
 export function Home() {
+  const participants = [
+    "Felipe",
+    "Denis",
+    "Gabriel",
+    "Paulo",
+    "Dudu",
+    "Tiemy",
+    "Larissa",
+    "Dryelly",
+  ];
+
   function handleParticipantAdd() {
     console.log("Você clicou no botão de adicionar!");
   }
 
-  function handleParticipantRemove(name: string){
-    console.log(`Você removeu o participante ${name}`) ;
+  function handleParticipantRemove(name: string) {
+    console.log(`Você removeu o participante ${name}`);
   }
 
   return (
@@ -24,12 +41,23 @@ export function Home() {
           placeholderTextColor="#6b6b6b"
         />
 
-        <TouchableOpacity style={styles.button} onPress={handleParticipantRemove}>
+        <TouchableOpacity
+          style={styles.button}
+          onPress={handleParticipantRemove}
+        >
           <Text style={styles.buttonText}>+</Text>
         </TouchableOpacity>
       </View>
-      <Participant name='Felipe' onRemove={() => handleParticipantRemove("Felipe")}/>
-      
+
+      <ScrollView>
+        {participants.map((participant) => (
+          <Participant
+            key={participant}
+            name={participant}
+            onRemove={() => handleParticipantRemove("Felipe")}
+          />
+        ))}
+      </ScrollView>
     </View>
   );
 }
