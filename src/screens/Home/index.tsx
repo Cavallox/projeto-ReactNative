@@ -3,7 +3,7 @@ import {
   TextInput,
   TouchableOpacity,
   View,
-  ScrollView,
+  FlatList,
 } from "react-native";
 import { Participant } from "../../components/Participant";
 import { styles } from "./styles";
@@ -49,7 +49,9 @@ export function Home() {
         </TouchableOpacity>
       </View>
 
-      <ScrollView>
+      <FlatList
+        data={participants}
+      />
         {participants.map((participant) => (
           <Participant
             key={participant}
@@ -57,7 +59,7 @@ export function Home() {
             onRemove={() => handleParticipantRemove(participant)}
           />
         ))}
-      </ScrollView>
+    
     </View>
   );
 }
