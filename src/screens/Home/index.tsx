@@ -41,25 +41,29 @@ export function Home() {
           placeholderTextColor="#6b6b6b"
         />
 
-        <TouchableOpacity
-          style={styles.button}
-          onPress={handleParticipantRemove}
-        >
+        <TouchableOpacity style={styles.button} onPress={handleParticipantAdd}>
           <Text style={styles.buttonText}>+</Text>
         </TouchableOpacity>
       </View>
 
       <FlatList
         data={participants}
-      />
-        {participants.map((participant) => (
+        keyExtractor={(item) => item}
+        renderItem={({ item }) => (
           <Participant
-            key={participant}
-            name={participant}
-            onRemove={() => handleParticipantRemove(participant)}
+            key={item}
+            name={item}
+            onRemove={() => handleParticipantRemove("Felipe")}
           />
-        ))}
-    
+        )}
+        showsVerticalScrollIndicator={false}
+        ListEmptyComponent={() => (
+          <text style={styles.listEmptyText}>
+            Ninguém chegou no evento ainda? Adicione participantes a sua lista
+            de presença.
+          </text>
+        )}
+      />
     </View>
   );
 }
