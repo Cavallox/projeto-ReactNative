@@ -72,10 +72,10 @@ export function Home() {
         )}
         showsVerticalScrollIndicator={false}
         ListEmptyComponent={() => (
-          <text style={styles.listEmptyText}>
+          <Text style={styles.listEmptyText}>
             Ninguém chegou no evento ainda? Adicione participantes a sua lista
             de presença.
-          </text>
+          </Text>
         )}
       />
     </View>
